@@ -27,14 +27,14 @@ const client = new Client({ disableEveryone: true });
 client.login(TOKEN);
 const Discord = require("discord.js");
 client.on("ready", () => {
-  console.log(`Logged in as ${client.user.tag} By RYO!`);
+  console.log(`Logged in as ${client.user.tag} By 𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩!`);
 });
 
 client.on("guildCreate", guild => {
   var embed = new Discord.RichEmbed()
     .setColor("RANDOM")
     .setDescription(
-      `BOT BRODCAST v1 BY RYO | bot: I have joined the server | Thanks for your confidence in Ryo`
+      `BOT MASG v1 BY 𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩 | bot: I have joined the server | Thanks for your confidence in 𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩`
     );
   guild.owner.send(embed);
 });
@@ -44,16 +44,16 @@ const developers = ["557657031713095705"];
 client.on("message", message => {
   if (message.content.startsWith(prefix + "help")) {
     let embed = new Discord.RichEmbed()
-      .setColor("#0ca9ff")
-      .setTitle("brodcast-v1-by-ryo")
+      .setColor("#000000")
+      .setTitle("𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩")
       .setDescription(`\`My Prefix (${prefix})\``)
       .addField("cmd", `**brodcast**: \`${CMD1}\``)
       .setThumbnail(
-        "https://www.emoji.co.uk/files/twitter-emojis/objects-twitter/11055-open-book.png"
+        "https://www.emoji.co.uk/files/google-emojis/objects-android/7938-open-book.png"
       )
       .setFooter(
-        "devloper ! Ryo#7984",
-        "https://cdn.discordapp.com/attachments/770996046792228884/785548892438659092/1d2ef3d18980805518eab3a6ad612b04.png"
+        "Made By 𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩",
+        "https://cdn.discordapp.com/attachments/783462180690591745/790079873456144384/64767cdbb4dadba29d2f1b82bd701cd6.png"
       );
 
     message.channel.send(embed);
@@ -73,100 +73,40 @@ client.on("message", async message => {
       return message.channel.send("**للأسف لا تمتلك صلاحية `ADMINISTRATOR`**");
     }
     if (!args) {
-      return message.reply("**يجب عليك كتابة كلمة او جملة لإرسال البرودكاست**");
+      return message.reply("**يجب عليك كتابة الوصف**");
     }
     message.channel;
     let embed = new Discord.RichEmbed()
-      .setColor("#0ca9ff")
-      .setTitle(`message: **${args}** `)
+      .setColor("#000000")
+      .setTitle(`**Message: **${args}**`)
       .setDescription("▬▬▬▬▬▬▬▬▬▬ main ▬▬▬▬▬▬▬▬▬▬")
-      .addField("Send to all members", "1️⃣", true)
-      .addField("Send to all members without embld", "2️⃣", true)
-      .addField("Send to this channel", "3️⃣", true)
-      .addField("Send to this channel without embld", "4️⃣", true)
+      .addField("Send to this channel ", "1️⃣", true)
+      .addField("Send to this channel without embld", "2️⃣", true)
       .addField("Cancel the message", "❌", true)
       .setThumbnail(
-        "https://www.emoji.co.uk/files/twitter-emojis/objects-twitter/11055-open-book.png"
+        "https://www.emoji.co.uk/files/google-emojis/objects-android/7938-open-book.png"
       )
       .setFooter(
-        "devloper ! Ryo#7984",
-        "https://cdn.discordapp.com/attachments/770996046792228884/785548892438659092/1d2ef3d18980805518eab3a6ad612b04.png"
+        "Made By 𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩",
+        "https://cdn.discordapp.com/attachments/783462180690591745/790079873456144384/64767cdbb4dadba29d2f1b82bd701cd6.png"
       );
 
     message.channel.send(embed).then(m => {
       m.react("1️⃣")
         .then(() => m.react("2️⃣"))
-        .then(() => m.react("3️⃣"))
-        .then(() => m.react("4️⃣"))
         .then(() => m.react("❌"));
 
-      let allFilter = (reaction, user) =>
-        reaction.emoji.name == "1️⃣" && user.id == message.author.id;
-      let al2Filter = (reaction, user) =>
-        reaction.emoji.name == "2️⃣" && user.id == message.author.id;
       let sendchanelFilter = (reaction, user) =>
-        reaction.emoji.name == "3️⃣" && user.id == message.author.id;
+        reaction.emoji.name == "1️⃣" && user.id == message.author.id;
       let sendchanesFilter = (reaction, user) =>
-        reaction.emoji.name == "4️⃣" && user.id == message.author.id;
+        reaction.emoji.name == "2️⃣" && user.id == message.author.id;
       let noFiler = (reaction, user) =>
         reaction.emoji.name == "❌" && user.id == message.author.id;
 
-      let all = m.createReactionCollector(allFilter);
-      let al2 = m.createReactionCollector(al2Filter);
       let sendchanel = m.createReactionCollector(sendchanelFilter);
       let sendchanes = m.createReactionCollector(sendchanesFilter);
       let no = m.createReactionCollector(noFiler);
 
-      all.on("collect", v => {
-        m.delete();
-        message.channel
-          .sendMessage("", {
-            embed: {
-              title: `تم ارسال رسالتك:ballot_box_with_check:   ... محتوى الرسالة هو : **${args}**  :arrow_right: `,
-              description: ` وعدد مستلمين الرسالة: **${message.guild.memberCount}**:busts_in_silhouette:`,
-              color: 3003135,
-              footer: {}
-            }
-          })
-          .then(msg => {
-            msg.delete(10000);
-          });
-        message.guild.members.forEach(member => {
-          let bc = new Discord.RichEmbed()
-            .setColor(colorbc)
-            .setThumbnail(serverlogo) //message.guild.iconURL
-            .setAuthor(message.author.username, message.author.AvatarURL)
-            .addField("● From", message.guild.name, true)
-            .addField("● TO", `<@${member.user.id}>`, true)
-            .addField(":mega:Message", args)
-            .setFooter(
-              "devloper ! Ryo#7984",
-              "https://cdn.discordapp.com/attachments/770996046792228884/785548892438659092/1d2ef3d18980805518eab3a6ad612b04.png"
-            );
-
-          member.sendEmbed(bc);
-          console.log("There is someone using the command: bc");
-        });
-      });
-      al2.on("collect", v => {
-        m.delete();
-        message.channel
-          .sendMessage("", {
-            embed: {
-              title: `تم ارسال رسالتك:ballot_box_with_check:   ... محتوى الرسالة هو : **${args}**  :arrow_right: `,
-              description: ` وعدد مستلمين الرسالة: **${message.guild.memberCount}**:busts_in_silhouette:`,
-              color: 3003135,
-              footer: {}
-            }
-          })
-          .then(msg => {
-            msg.delete(10000);
-          });
-        message.guild.members.forEach(member => {
-          member.send(args);
-          console.log("There is someone using the command: bc");
-        });
-      });
       sendchanel.on("collect", v => {
         m.delete();
         message.channel
@@ -190,13 +130,15 @@ client.on("message", async message => {
             "**للأسف لا تمتلك صلاحية** `ADMINISTRATOR`"
           );
         let say = new Discord.RichEmbed()
-          .setColor("RANDOM")
-          .setTitle(args)
-          .setDescription("**Message🔼**")
-          .setThumbnail(message.author.avatarURL)
+          .setColor("#000000")
+          .setTitle("هاااام")
+          .setDescription(args)
+          .setThumbnail(
+            "https://cdn.discordapp.com/attachments/783462180690591745/790079873456144384/64767cdbb4dadba29d2f1b82bd701cd6.png"
+          )
           .setFooter(
-            "devloper ! Ryo#7984",
-            "https://cdn.discordapp.com/attachments/770996046792228884/785548892438659092/1d2ef3d18980805518eab3a6ad612b04.png"
+            "Made By 𝐋𝐮𝐜𝐢𝐟𝐞𝐫 𝐆𝐫𝐨𝐮𝐩",
+            "https://cdn.discordapp.com/attachments/783462180690591745/790079873456144384/64767cdbb4dadba29d2f1b82bd701cd6.png"
           );
 
         message.channel.sendEmbed(say);
@@ -243,15 +185,6 @@ client.on("message", async message => {
           });
       });
     });
-  }
-});
-
-let channelID = reactromm;
-
-client.on("message", async message => {
-  if (message.channel.id === channelID) {
-    message.react(reactro1mm);
-    message.react(reactro2mm);
   }
 });
 
